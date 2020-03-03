@@ -49,6 +49,16 @@ Table film {
   parantial_quide int
 }
 
+Table film_gener{
+  film_id int[pk]
+  gener_id int[pk]
+}
+
+Table gener{
+  id int
+  name varchar
+}
+
 Table role{
   film_id int
   actor_id int
@@ -67,6 +77,7 @@ Table actor {
 
 Ref: actor.id > role.actor_id
 Ref: film.id > role.film_id
+Ref: film.genres_id < generes.id
 
 Table watchlist {
   user_id int [pk]

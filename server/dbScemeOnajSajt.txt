@@ -1,0 +1,80 @@
+//// -- LEVEL 1
+//// -- Tables and References
+
+// Creating tables
+Table users as U {
+  id int [pk, increment] // auto-increment
+  full_name varchar
+  user_name varchar
+  pasword varchar
+  country_code int
+  birthaday datetime
+  img_path path
+}
+
+
+
+Table review {
+  user_id int [pk]
+  film_id int [pk]
+  stars double
+}
+
+Table countries {
+  code int [pk]
+  name varchar
+ }
+
+// Creating references
+// You can also define relaionship separately
+// > many-to-one; < one-to-many; - one-to-one
+Ref: U.id > review.user_id
+Ref: film.id > review.film_id
+Ref: U.country_code < countries.code
+//----------------------------------------------//
+
+//// -- LEVEL 2
+//// -- Adding column settings
+
+Table film {
+  id int [pk]
+  title varchar
+  original_title varchar
+  length int
+  description text
+  genres_id int
+  release_date date
+  trailer_link varcharacter
+  cover_path varchar
+  parantial_quide int
+}
+
+Table role{
+  film_id int
+  actor_id int
+  name_character varchar
+}
+
+
+Table actor {
+  id int [pk]
+  full_name varchar
+  birthaday datetime
+  description text
+  imdb_link varchar
+  wikipedia_link varchar
+}
+
+Ref: actor.id > role.actor_id
+Ref: film.id > role.film_id
+
+Table watchlist {
+  user_id int [pk]
+  film_id int [pk]
+  watched boolean
+}
+
+
+Ref: "watchlist"."user_id" < "users"."id"
+
+Ref: "watchlist"."film_id" < "film"."id"

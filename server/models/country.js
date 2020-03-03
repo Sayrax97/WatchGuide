@@ -11,10 +11,16 @@ module.exports = (sequelize, DataTypes) => {
       },
       name: { type: DataTypes.STRING, allowNull: false }
     },
-    {}
+    {
+      freezeTableName: true,
+      timestamps: false
+    }
   );
   country.associate = function(models) {
     // associations can be defined here
+    models.country.hasMany(models.user, {
+      foreignKey: "country_id"
+    });
   };
   return country;
 };

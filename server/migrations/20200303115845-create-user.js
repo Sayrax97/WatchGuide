@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      country_code: {
+      country_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         model: "country",

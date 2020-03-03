@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       user_id: DataTypes.INTEGER,
       film_id: DataTypes.INTEGER,
-      watched: DataTypes.BOOLEAN
+      watched: { type: DataTypes.BOOLEAN, default: false }
     },
     {
       freezeTableName: true,

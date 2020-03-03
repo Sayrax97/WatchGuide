@@ -4,11 +4,13 @@ module.exports = {
     return queryInterface.createTable("country", {
       id: {
         autoIncrement: true,
+        allowNull: false,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       }
     });
   },

@@ -3,7 +3,12 @@ module.exports = (sequelize, DataTypes) => {
   const film = sequelize.define(
     "film",
     {
-      id: DataTypes.INTEGER,
+      id: {
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
       title: DataTypes.STRING,
       original_title: DataTypes.STRING,
       length: DataTypes.INTEGER,

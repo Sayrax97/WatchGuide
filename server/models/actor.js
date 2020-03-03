@@ -3,7 +3,12 @@ module.exports = (sequelize, DataTypes) => {
   const actor = sequelize.define(
     "actor",
     {
-      id: DataTypes.INTEGER,
+      id: {
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
       full_name: DataTypes.STRING,
       birthaday: DataTypes.DATE,
       description: DataTypes.STRING,

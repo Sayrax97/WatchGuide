@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("watchlists", {
+    return queryInterface.createTable("watchlist", {
       user_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -21,6 +21,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("watchlists");
+    return queryInterface.dropTable("watchlist");
   }
 };

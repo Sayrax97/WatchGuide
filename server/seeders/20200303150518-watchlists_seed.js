@@ -7,8 +7,7 @@ module.exports = {
       [
         {
           user_id: 1,
-          film_id: 4,
-          watched: false
+          film_id: 4
         }
       ],
       {}

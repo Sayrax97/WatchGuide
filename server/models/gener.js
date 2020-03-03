@@ -3,7 +3,12 @@ module.exports = (sequelize, DataTypes) => {
   const gener = sequelize.define(
     "gener",
     {
-      id: DataTypes.INTEGER,
+      id: {
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
       name: DataTypes.STRING
     },
     {

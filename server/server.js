@@ -28,6 +28,7 @@ app.get("/users/country/", (req, res) => {
     .then(users => res.send({ users }));
 });
 require("./routes/user.routes")(app);
+require("./routes/country.routes")(app);
 
 app.get("/actor/role/", (req, res) => {
   models.actor

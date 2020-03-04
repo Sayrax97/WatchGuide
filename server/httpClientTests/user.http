@@ -1,7 +1,16 @@
 http://localhost:3000/user/2
 
 ###
-
-http://localhost:3000/users/country
+http://localhost:3000/user
 
 ###
+POST http://localhost:3000/user
+content-type: application/json
+
+{
+    "full_name": "test",
+    "username":"test",
+    "password":"g42g4h4h43h42h42h24h",
+    "country_id":2,
+    "birthday":"1955-11-10"
+}

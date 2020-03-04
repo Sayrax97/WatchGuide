@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      pasword: {
+      password: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -25,7 +25,7 @@ module.exports = {
         model: "country",
         key: "id"
       },
-      birthaday: {
+      birthday: {
         type: Sequelize.DATE,
         allowNull: false
       },

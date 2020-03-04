@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/user/:id", (req, res) => {
+app.get("/users/:id", (req, res) => {
   models.user.findByPk(req.params.id).then(user => {
     res.send({ user });
   });
@@ -27,5 +27,5 @@ app.get("/users/country/", (req, res) => {
     })
     .then(users => res.send({ users }));
 });
-
+require("./routes/user.routes")(app);
 app.listen(port, () => console.log("Server je aktiviran"));

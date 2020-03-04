@@ -16,7 +16,8 @@ module.exports = {
       },
       watched: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        default: false
       }
     });
   },

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       original_title: DataTypes.STRING,
       length: DataTypes.INTEGER,
-      description: DataTypes.STRING,
+      description: DataTypes.TEXT,
       release_date: DataTypes.DATE,
       trailer_link: DataTypes.STRING,
       cover_path: DataTypes.STRING,

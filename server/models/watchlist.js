@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const watchlist = sequelize.define(
     "watchlist",
     {
-      user_id: DataTypes.INTEGER,
-      film_id: DataTypes.INTEGER,
+      user_id: { type: DataTypes.INTEGER, primaryKey: true },
+      film_id: { type: DataTypes.INTEGER, primaryKey: true },
       watched: { type: DataTypes.BOOLEAN, defaultValue: false }
     },
     {

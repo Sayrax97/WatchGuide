@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const film_gener = sequelize.define(
     "film_gener",
     {
-      film_id: DataTypes.INTEGER,
-      gener_id: DataTypes.INTEGER
+      film_id: { type: DataTypes.INTEGER, primaryKey: true },
+      gener_id: { type: DataTypes.INTEGER, primaryKey: true }
     },
     {
       freezeTableName: true,

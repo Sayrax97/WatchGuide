@@ -24,7 +24,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   film.associate = function(models) {
-    // associations can be defined here
+    //associations can be defined here
+    models.film.belongsToMany(models.actor, {
+      through: models.role,
+      foreignKey: "film_id"
+    });
+    // models.film.hasMany(models.role, {
+    //   foreignKey: "film_id"
+    // });
   };
   return film;
 };

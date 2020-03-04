@@ -14,3 +14,14 @@ content-type: application/json
     "country_id":2,
     "birthday":"1955-11-10"
 }
+###
+PUT http://localhost:3000/user/4
+content-type: application/json
+
+{
+    "full_name":"test2",
+    "username":"test2",
+    "password":"g42g4h4h43h4fefqef2h42h24h",
+    "country_id":3,
+    "birthday":"1966-11-10"
+}

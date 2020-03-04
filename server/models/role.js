@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const role = sequelize.define(
     "role",
     {
-      film_id: DataTypes.INTEGER,
-      actor_id: DataTypes.INTEGER,
+      film_id: { type: DataTypes.INTEGER, primaryKey: true },
+      actor_id: { type: DataTypes.INTEGER, primaryKey: true },
       name_charackter: DataTypes.STRING
     },
     {
@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   );
   role.associate = function(models) {
     // associations can be defined here
+    // models.role.belongsTo(models.actor);
+    // models.role.belongsTo(models.film);
   };
   return role;
 };

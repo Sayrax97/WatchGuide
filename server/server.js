@@ -28,4 +28,19 @@ app.get("/users/country/", (req, res) => {
     .then(users => res.send({ users }));
 });
 require("./routes/user.routes")(app);
+
+app.get("/actor/role/", (req, res) => {
+  models.actor
+    .findAll({
+      include: [
+        {
+          model: models.film,
+          attributes: ["title"]
+          //through: { where: { amount: 10 } }
+        }
+      ]
+    })
+    .then(users => res.send({ users }));
+});
+
 app.listen(port, () => console.log("Server je aktiviran"));

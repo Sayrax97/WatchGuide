@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       freezeTableName: true,
-      timestamps: false
+      timestamps: false,
+      underscored: true
     }
   );
   actor.associate = function(models) {

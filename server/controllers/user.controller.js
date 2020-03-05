@@ -4,7 +4,17 @@ const op = models.Sequelize.Op;
 
 exports.findAll = (req, res) => {
   user
-    .findAll()
+    .findAll({
+      attributes: {
+        exclude: ["country_id"]
+      },
+      include: [
+        {
+          model: models.country,
+          attributes: ["name"]
+        }
+      ]
+    })
     .then(data => res.send(data))
     .catch(err => {
       res.status(500).send({

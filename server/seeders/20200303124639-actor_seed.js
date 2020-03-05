@@ -7,7 +7,7 @@ module.exports = {
       [
         {
           full_name: "Bata Zivojinovic",
-          birthaday: "1933-06-05",
+          birthday: "1933-06-05",
           description: "Srbin, COVEK",
           imdb_link:
             "https://www.imdb.com/find?q=bata+zivojinovic&ref_=nv_sr_sm",

@@ -1,7 +1,7 @@
-http://localhost:3000/user/2
+GET http://localhost:3000/user/2
 
 ###
-http://localhost:3000/user
+GET http://localhost:3000/user
 
 ###
 POST http://localhost:3000/user

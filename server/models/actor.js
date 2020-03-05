@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       full_name: DataTypes.STRING,
-      birthaday: DataTypes.DATE,
+      birthday: DataTypes.DATE,
       description: DataTypes.STRING,
       imdb_link: DataTypes.STRING,
       wikipedia_link: DataTypes.STRING

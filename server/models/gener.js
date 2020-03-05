@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
   );
   gener.associate = function(models) {
     // associations can be defined here
+    models.gener.belongsToMany(models.film, {
+      through: models.film_gener,
+      foreignKey: "gener_id"
+    });
   };
   return gener;
 };

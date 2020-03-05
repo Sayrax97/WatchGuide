@@ -4,7 +4,20 @@ const op = models.Sequelize.Op;
 
 exports.findAll = (req, res) => {
   film
-    .findAll()
+    .findAll({
+      include: [
+        {
+          model: models.gener,
+          attributes: { exclude: ["id"] },
+          through: { attributes: [] }
+        },
+        {
+          model: models.actor,
+          attributes: { exclude: ["id"] },
+          through: { attributes: [] }
+        }
+      ]
+    })
     .then(data => res.send(data))
     .catch(err => {
       res.status(500).send({

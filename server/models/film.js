@@ -30,6 +30,21 @@ module.exports = (sequelize, DataTypes) => {
       through: models.role,
       foreignKey: "film_id"
     });
+
+    models.film.belongsToMany(models.user, {
+      through: models.review,
+      foreignKey: "film_id"
+    });
+
+    models.film.belongsToMany(models.user, {
+      through: models.watchlist,
+      foreignKey: "film_id"
+    });
+
+    models.film.belongsToMany(models.gener, {
+      through: models.film_gener,
+      foreignKey: "film_id"
+    });
     // models.film.hasMany(models.role, {
     //   foreignKey: "film_id"
     // });

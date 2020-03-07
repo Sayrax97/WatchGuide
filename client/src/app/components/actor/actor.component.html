@@ -4,6 +4,9 @@
   <p>{{ actor.birthday }}</p>
   <p>{{ actor.description }}</p>
   <p>
+    <img [src]="actor.image_url" alt="" />
+  </p>
+  <p>
     <a [href]="actor.imdb_link" target="_blank">link do imbd page</a>
   </p>
   <a [href]="actor.wikipedia_link" target="_blank">link do wiki page</a>

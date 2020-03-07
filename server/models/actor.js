@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       birthday: DataTypes.DATE,
       description: DataTypes.STRING,
       imdb_link: DataTypes.STRING,
-      wikipedia_link: DataTypes.STRING
+      wikipedia_link: DataTypes.STRING,
+      image_url: DataTypes.STRING
     },
     {
       freezeTableName: true,

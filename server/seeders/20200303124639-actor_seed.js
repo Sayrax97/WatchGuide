@@ -12,7 +12,8 @@ module.exports = {
           imdb_link:
             "https://www.imdb.com/find?q=bata+zivojinovic&ref_=nv_sr_sm",
           wikipedia_link:
-            "https://en.wikipedia.org/wiki/Bata_%C5%BDivojinovi%C4%87"
+            "https://en.wikipedia.org/wiki/Bata_%C5%BDivojinovi%C4%87",
+          image_url: "http://localhost:3000/img/actors/1/actor.jpg"
         }
       ],
       {}

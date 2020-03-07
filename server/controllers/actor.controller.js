@@ -42,7 +42,8 @@ exports.create = (req, res) => {
     birthday: req.body.birthday,
     description: req.body.description,
     imdb_link: req.body.imdb_link,
-    wikipedia_link: req.body.wikipedia_link
+    wikipedia_link: req.body.wikipedia_link,
+    image_url: req.body.image_url
   };
   actor
     .create(newActor)

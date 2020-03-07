@@ -24,6 +24,9 @@ module.exports = {
       },
       wikipedia_link: {
         type: Sequelize.STRING
+      },
+      image_url: {
+        type: Sequelize.STRING
       }
     });
   },

@@ -1,4 +1,18 @@
 const models = require("../models");
+const fs = require("fs");
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: function(req, res, cb) {
+    const { username } = req.body;
+    const dir = `./img/profiles/${username}`;
+    fs.mkdirSync(dir);
+    cb(null, dir);
+  },
+  filename: function(req, file, cb) {
+    cb(null, "profile.jpg");
+  }
+});
+const upload = multer({ storage: storage });
 const user = models.user;
 const op = models.Sequelize.Op;
 
@@ -78,7 +92,7 @@ exports.create = (req, res) => {
     password: req.body.password,
     country_id: req.body.country_id,
     birthday: req.body.birthday,
-    image_path: req.body.image_path
+    image_path: req.file.path
   };
   user
     .create(newUser)
@@ -107,6 +121,34 @@ exports.update = (req, res) => {
       if (valid == 1) {
         res.send({
           message: "User was successfully updated"
+        });
+      } else {
+        res.send({
+          message:
+            "Bad request body provided, missing some attributes maybe or id wrong"
+        });
+      }
+    });
+};
+exports.change = (req, res) => {
+  if (!req.body.id) {
+    res.status(400).send({
+      message: "Id was not provided"
+    });
+    return;
+  }
+  let id = req.body.id;
+  user
+    .update(
+      { image_path: req.file.path },
+      {
+        where: { id: id }
+      }
+    )
+    .then(valid => {
+      if (valid == 1) {
+        res.send({
+          message: "Profile image was successfully updated"
         });
       } else {
         res.send({

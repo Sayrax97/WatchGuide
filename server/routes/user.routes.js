@@ -1,10 +1,25 @@
 module.exports = app => {
+  const fs = require("fs");
   const user = require("../controllers/user.controller.js");
-
+  const multer = require("multer");
+  const storage = multer.diskStorage({
+    destination: function(req, res, cb) {
+      const { username } = req.body;
+      const dir = `./img/profiles/${username}`;
+      fs.mkdirSync(dir);
+      cb(null, dir);
+    },
+    filename: function(req, file, cb) {
+      cb(null, "profile.jpg");
+    }
+  });
+  const upload = multer({
+    storage: storage
+  });
   var router = require("express").Router();
 
   // Create a new user
-  router.post("/", user.create);
+  router.post("/", upload.single("profileImage"), user.create);
 
   // Retrieve all users
   router.get("/", user.findAll);
@@ -12,14 +27,11 @@ module.exports = app => {
   // Retrieve a single user with id
   router.get("/:id", user.findOne);
 
+  //change profile picture
+  router.put("/change", upload.single("profileImage"), user.change);
+
   // Update a User with id
   router.put("/:id", user.update);
-
-  //   // Delete a Tutorial with id
-  //   router.delete("/:id", user.delete);
-
-  //   // Create a new Tutorial
-  //   router.delete("/", user.deleteAll);
 
   app.use("/user", router);
 };

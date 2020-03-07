@@ -8,6 +8,7 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/img", express.static("img"));
 
 //ROUTES
 require("./routes/user.routes")(app);

@@ -10,4 +10,7 @@ export class UserServiceService {
   getAllUsers() {
     return this.httpClient.get<any>(this.url);
   }
+  getUser(id) {
+    return this.httpClient.get<any>(this.url + `/${id}`);
+  }
 }

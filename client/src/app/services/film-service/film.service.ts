@@ -1,9 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Film } from "./../../Models/filmModel";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class FilmService {
+  url = "http://localhost:3000/film";
+  constructor(private httpClient: HttpClient) {}
 
-  constructor() { }
+  getFilms() {
+    return this.httpClient.get<Array<Film>>(this.url);
+  }
 }

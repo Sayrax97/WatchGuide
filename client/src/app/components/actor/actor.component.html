@@ -1,0 +1,10 @@
+<p>actor works!</p>
+<div *ngIf="actor">
+  <p>{{ actor.full_name }}</p>
+  <p>{{ actor.birthday }}</p>
+  <p>{{ actor.description }}</p>
+  <p>
+    <a [href]="actor.imdb_link" target="_blank">link do imbd page</a>
+  </p>
+  <a [href]="actor.wikipedia_link" target="_blank">link do wiki page</a>
+</div>

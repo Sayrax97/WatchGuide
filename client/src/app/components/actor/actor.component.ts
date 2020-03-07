@@ -1,6 +1,7 @@
 import { Actor } from "./../../Models/actorModel";
 import { ActorServiceService } from "./../../services/actor-service/actor-service.service";
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-actor",
@@ -9,12 +10,17 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ActorComponent implements OnInit {
   actor: Actor;
-  constructor(private aSrevise: ActorServiceService) {}
+  constructor(
+    private aSrevise: ActorServiceService,
+    private activateRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.aSrevise.getActor(1).subscribe(res => {
-      this.actor = res;
-      console.log(res);
+    this.activateRoute.params.subscribe(params => {
+      let actor_id = params.id;
+      this.aSrevise.getActor(actor_id).subscribe(res => {
+        this.actor = res;
+      });
     });
   }
 }

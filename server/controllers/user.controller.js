@@ -140,7 +140,7 @@ exports.change = (req, res) => {
   let id = req.body.id;
   user
     .update(
-      { image_path: req.file.path },
+      { image_path: "http://localhost:3000/" + req.file.path },
       {
         where: { id: id }
       }

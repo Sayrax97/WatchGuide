@@ -1,8 +1,8 @@
-<p>profile works!</p>
 <div *ngIf="user">
   <p>{{ user.full_name }}</p>
   <p>{{ user.username }}</p>
   <p>{{ user.password }}</p>
   <p>{{ user.birthday }}</p>
   <p>{{ user.country.name }}</p>
+  <img [src]="user.image_path" alt="" />
 </div>

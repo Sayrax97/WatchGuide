@@ -13,7 +13,7 @@ module.exports = {
           release_date: "2001-12-19",
           trailer_link: "https://www.youtube.com/watch?v=V75dMMIW2B4",
           parantial_quide: 13,
-          cover_path:'http://localhost:3000/img/film/1/cover.jpg'
+          cover_path: "http://localhost:3000/img/films/1/cover.jpg"
         },
         {
           title: "The Lord of the Rings: The Two Towers",

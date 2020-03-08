@@ -1,6 +1,7 @@
 import { Film } from "./../../Models/filmModel";
 import { FilmService } from "./../../services/film-service/film.service";
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-film",
@@ -8,14 +9,20 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./film.component.css"]
 })
 export class FilmComponent implements OnInit {
-  films: Array<Film>;
+  film: Film;
 
-  constructor(private fService: FilmService) {}
+  constructor(
+    private fService: FilmService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.fService.getFilms().subscribe(res => {
-      this.films = res;
-      console.log(res);
+    this.activatedRoute.params.subscribe(params => {
+      let film_id = params.id;
+      this.fService.getFilm(film_id).subscribe(res => {
+        this.film = res;
+        console.log(res);
+      });
     });
   }
 }

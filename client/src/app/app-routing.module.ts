@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: "create-account", component: CreateAccountComponent },
   { path: "profile/:id", component: ProfileComponent },
   { path: "actor/:id", component: ActorComponent },
-  { path: "film", component: FilmComponent },
+  { path: "film/:id", component: FilmComponent },
   { path: "**", redirectTo: "" }
 ];
 

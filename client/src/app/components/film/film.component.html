@@ -1,18 +1,17 @@
 <p>film works!</p>
-<ul>
-  <li *ngFor="let item of films">
-    <p>{{ item.title }}</p>
-    <p>{{ item.original_title }}</p>
-    <p>{{ item.length }}</p>
-    <p>{{ item.description }}</p>
-    <p>{{ item.release_date }}</p>
-    <a [href]="item.trailer_link" target="_blank">link do trailera</a>
-    <ul>
-      <li *ngFor="let i of item.geners">
-        {{ i.name }}
-      </li>
-    </ul>
-    <p>{{ item.cover_path }}</p>
-    <p>{{ item.parantial_quide }}</p>
-  </li>
-</ul>
+
+<div *ngIf="film">
+  <p>{{ film.title }}</p>
+  <p>{{ film.original_title }}</p>
+  <p>{{ film.length }}</p>
+  <p>{{ film.description }}</p>
+  <p>{{ film.release_date }}</p>
+  <a [href]="film.trailer_link" target="_blank">Trailer</a>
+  <ul>
+    <li *ngFor="let i of film.geners">
+      {{ i.name }}
+    </li>
+  </ul>
+  <img [src]="film.cover_path" alt="" />
+  <p>{{ film.parantial_quide }}</p>
+</div>

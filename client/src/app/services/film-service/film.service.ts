@@ -12,4 +12,7 @@ export class FilmService {
   getFilms() {
     return this.httpClient.get<Array<Film>>(this.url);
   }
+  getFilm(id: number) {
+    return this.httpClient.get<Film>(this.url + `/${id}`);
+  }
 }

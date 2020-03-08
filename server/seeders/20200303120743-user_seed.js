@@ -8,7 +8,7 @@ module.exports = {
         {
           full_name: "Lazar Pavlovic",
           username: "TiranrinUSenci",
-          password: "b1c3255c4c28cb0ab8b0e5a987a379ea",
+          password: "94dc46df8b690f30b2d6f6f8a018b17c",
           country_id: 1,
           birthday: "1998-02-04"
         },

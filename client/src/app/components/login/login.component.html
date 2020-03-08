@@ -1,1 +1,19 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" class="container form-group" (ngSubmit)="login()">
+  <label for="username">Username</label>
+  <input
+    type="text"
+    name="username"
+    class="form-control"
+    formControlName="username"
+  />
+  <label for="password">Password</label>
+  <input
+    type="password"
+    name="password"
+    class="form-control"
+    formControlName="password"
+  />
+  <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">
+    Login
+  </button>
+</form>

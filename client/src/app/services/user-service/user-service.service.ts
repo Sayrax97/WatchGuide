@@ -13,4 +13,10 @@ export class UserServiceService {
   getUser(id) {
     return this.httpClient.get<any>(this.url + `/${id}`);
   }
+  login(username: string, password: string) {
+    return this.httpClient.post<any>(this.url + "/login", {
+      username,
+      password
+    });
+  }
 }

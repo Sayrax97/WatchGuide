@@ -18,6 +18,8 @@ module.exports = app => {
   });
   var router = require("express").Router();
 
+  //Login user
+  router.post("/login", upload.none(), user.login);
   // Create a new user
   router.post("/", upload.single("profileImage"), user.create);
 

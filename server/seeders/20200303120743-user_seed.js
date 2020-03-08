@@ -15,7 +15,7 @@ module.exports = {
         {
           full_name: "Dusan Jankovic",
           username: "BSNoob",
-          password: "d5aa4b1632902ea96f89866a01f6fd89",
+          password: "4531091efe21b4071422f27cd015cf10",
           country_id: 1,
           birthday: "1997-06-17"
         },

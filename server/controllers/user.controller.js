@@ -1,5 +1,8 @@
 const models = require("../models");
+const md5 = require("md5");
 const fs = require("fs");
+const PRIVATE_KEY = fs.readFileSync("config/private.pem");
+const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: function(req, res, cb) {
@@ -157,4 +160,38 @@ exports.change = (req, res) => {
         });
       }
     });
+};
+exports.login = (req, res) => {
+  if (!req.body.username || !req.body.password) {
+    res.status(400).send({
+      message: "ERROR:Username or password missing"
+    });
+  } else {
+    let username = req.body.username;
+    let password = req.body.password;
+    user
+      .findOne({
+        where: {
+          username: username
+        },
+        attributes: ["id", "username", "password"]
+      })
+      .then(data => {
+        hashed_password = md5(password);
+        if (hashed_password == data.password) {
+          let user_id = String(data.id);
+          let token = jwt.sign({}, PRIVATE_KEY, {
+            algorithm: "RS256",
+            expiresIn: 120,
+            subject: user_id
+          });
+          console.log(token);
+          res.send({ token });
+        } else {
+          res.status(401).send({
+            message: "ERROR:Incorect password"
+          });
+        }
+      });
+  }
 };

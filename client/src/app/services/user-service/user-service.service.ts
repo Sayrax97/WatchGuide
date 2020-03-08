@@ -1,3 +1,4 @@
+import { User } from "./../../Models/userModel";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
@@ -18,5 +19,9 @@ export class UserServiceService {
       username,
       password
     });
+  }
+
+  createUser(user: User) {
+    return this.httpClient.post(this.url, user);
   }
 }

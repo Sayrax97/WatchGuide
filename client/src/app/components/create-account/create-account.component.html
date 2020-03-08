@@ -1,1 +1,45 @@
 <p>create-account works!</p>
+<form
+  [formGroup]="createAccountForm"
+  class="container form-group"
+  (ngSubmit)="createAccount()"
+>
+  <label>Full Name</label>
+  <input
+    type="text"
+    name="full_name"
+    class="form-control"
+    formControlName="full_name"
+  />
+  <label>Username</label>
+  <input
+    type="text"
+    name="username"
+    class="form-control"
+    formControlName="username"
+  />
+  <label>Country</label>
+  <select *ngIf="countries" formControlName="country" class="form-control">
+    <option *ngFor="let item of countries" [value]="item.id">{{
+      item.name
+    }}</option>
+  </select>
+  <label>Password</label>
+  <input
+    type="password"
+    name="password"
+    class="form-control"
+    formControlName="password"
+  />
+  <label>Date of birth</label>
+  <input formControlName="birthday" class="form-control" type="date" />
+  <label>Input image</label>
+  <input formControlName="image" class="form-control" type="file" />
+  <button
+    type="submit"
+    [disabled]="!createAccountForm.valid"
+    class="btn btn-primary"
+  >
+    Login
+  </button>
+</form>

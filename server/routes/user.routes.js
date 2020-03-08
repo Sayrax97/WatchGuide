@@ -21,7 +21,7 @@ module.exports = app => {
   //Login user
   router.post("/login", upload.none(), user.login);
   // Create a new user
-  router.post("/", upload.single("profileImage"), user.create);
+  router.post("/", upload.none(), user.create); //upload.single("profileImage")
 
   // Retrieve all users
   router.get("/", user.findAll);

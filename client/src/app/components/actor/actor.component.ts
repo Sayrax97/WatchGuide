@@ -11,14 +11,14 @@ import { ActivatedRoute } from "@angular/router";
 export class ActorComponent implements OnInit {
   actor: Actor;
   constructor(
-    private aSrevise: ActorServiceService,
+    private aService: ActorServiceService,
     private activateRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(params => {
       let actor_id = params.id;
-      this.aSrevise.getActor(actor_id).subscribe(res => {
+      this.aService.getActor(actor_id).subscribe(res => {
         this.actor = res;
       });
     });

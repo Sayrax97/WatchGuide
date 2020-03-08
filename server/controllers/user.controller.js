@@ -92,10 +92,10 @@ exports.create = (req, res) => {
   let newUser = {
     full_name: req.body.full_name,
     username: req.body.username,
-    password: req.body.password,
+    password: md5(req.body.password),
     country_id: req.body.country_id,
-    birthday: req.body.birthday,
-    image_path: req.file.path
+    birthday: req.body.birthday
+    //image_path: req.file.path
   };
   user
     .create(newUser)

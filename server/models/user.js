@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      full_name: DataTypes.STRING,
-      username: DataTypes.STRING,
-      password: DataTypes.STRING,
-      country_id: DataTypes.INTEGER,
-      birthday: DataTypes.DATE,
+      full_name: { type: DataTypes.STRING, allowNull: false },
+      username: { type: DataTypes.STRING, allowNull: false },
+      password: { type: DataTypes.STRING, allowNull: false },
+      country_id: { type: DataTypes.INTEGER, allowNull: false },
+      birthday: { type: DataTypes.DATE, allowNull: false },
       image_path: DataTypes.STRING
     },
     {

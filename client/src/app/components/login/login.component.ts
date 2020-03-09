@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { UserServiceService } from "src/app/services/user-service/user-service.service";
 import * as jwt_decode from "jwt-decode";
+import { AuthService } from "src/app/services/auth-service/auth.service";
 
 @Component({
   selector: "app-login",
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(
     private userService: UserServiceService,
+    private auth: AuthService,
     private router: Router
   ) {}
 
@@ -29,21 +31,12 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get("password").value;
   }
 
-  getDecodedAccessToken(token: string): any {
-    try {
-      return jwt_decode(token);
-    } catch (Error) {
-      return null;
-    }
-  }
-
   login() {
     this.userService
       .login(this.getUsername(), this.getPassword())
       .subscribe(data => {
-        let tokenInfo = this.getDecodedAccessToken(data.token);
-        this.router.navigate(["profile", { id: tokenInfo.sub }]);
-        console.log(data);
+        this.auth.saveToken(data.token);
+        this.router.navigate(["profile"]);
       });
   }
 }

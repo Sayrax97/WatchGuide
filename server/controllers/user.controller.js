@@ -98,13 +98,32 @@ exports.create = (req, res) => {
     //image_path: req.file.path
   };
   user
+    .findOne({
+      where: {
+        username: req.body.username
+      }
+    })
+    .then(found => {
+      if (found) {
+        res.send({
+          message: "User already excist"
+        });
+      }
+    });
+  user
     .create(newUser)
     .then(data => {
-      res.send(data);
+      let user_id = String(data.id);
+      let token = jwt.sign({}, PRIVATE_KEY, {
+        algorithm: "RS256",
+        expiresIn: 120,
+        subject: user_id
+      });
+      res.send({ token });
     })
     .catch(err => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating user"
+        message: "Some error occured while creating user"
       });
     });
 };
@@ -185,7 +204,6 @@ exports.login = (req, res) => {
             expiresIn: 120,
             subject: user_id
           });
-          console.log(token);
           res.send({ token });
         } else {
           res.status(401).send({
@@ -194,4 +212,9 @@ exports.login = (req, res) => {
         }
       });
   }
+};
+exports.profile = (req, res) => {
+  let decoded = jwt.verify(req.headers["authorization"], PRIVATE_KEY);
+  console.log(decoded);
+  console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 };

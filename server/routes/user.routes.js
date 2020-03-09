@@ -23,11 +23,14 @@ module.exports = app => {
   // Create a new user
   router.post("/", upload.none(), user.create); //upload.single("profileImage")
 
-  // Retrieve all users
-  router.get("/", user.findAll);
-
   // Retrieve a single user with id
   router.get("/:id", user.findOne);
+
+  //Get user profile
+  router.get("/pr", user.profile);
+
+  // Retrieve all users
+  router.get("/", user.findAll);
 
   //change profile picture
   router.put("/change", upload.single("profileImage"), user.change);

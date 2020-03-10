@@ -22,16 +22,18 @@ module.exports = {
             "The continuing quest of Frodo and the Fellowship to destroy the One Ring. Frodo and Sam discover they are being followed by the mysterious Gollum. Aragorn, the Elf archer Legolas, and Gimli the Dwarf encounter the besieged Rohan kingdom, whose once great King Theoden has fallen under Saruman's deadly spell.",
           release_date: "2002-12-18",
           trailer_link: "https://www.youtube.com/watch?v=LbfMDwc4azU",
-          parantial_quide: 13
+          parantial_quide: 13,
+          cover_path: "http://localhost:3000/img/films/2/cover.jpg"
         },
         {
-          title: "The Lord of the Rings: The Fellowship of the Ring",
+          title: "The Lord of the Rings: Return of the King",
           length: 201,
           description:
             "The final confrontation between the forces of good and evil fighting for control of the future of Middle-earth. Frodo and Sam reach Mordor in their quest to destroy the One Ring, while Aragorn leads the forces of good against Sauron's evil army at the stone city of Minas Tirith.",
           release_date: "2003-12-17",
           trailer_link: "https://www.youtube.com/watch?v=y2rYRu8UW8M",
-          parantial_quide: 13
+          parantial_quide: 13,
+          cover_path: "http://localhost:3000/img/films/3/cover.jpg"
         },
         {
           title: "Walter defends Sarajevo",
@@ -41,7 +43,8 @@ module.exports = {
             "Retreating German armies are in desperate need of fuel. Valter, mysterious and charismatic resistance leader can jeopardize their supply. Germans carry out cunning plan in order to eliminate that obstacle. ",
           release_date: "1972-04-12",
           trailer_link: "https://www.youtube.com/watch?v=e4IiO53Ueps",
-          parantial_quide: 13
+          parantial_quide: 13,
+          cover_path: "http://localhost:3000/img/films/4/cover.jpg"
         }
       ],
       {}

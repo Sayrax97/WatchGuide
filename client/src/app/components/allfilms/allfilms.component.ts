@@ -14,6 +14,28 @@ export class AllFilmsComponent implements OnInit {
   ngOnInit(): void {
     this.fService.getFilms().subscribe(data => {
       this.films = data;
+      let newfilm: Film = {
+        title: "Test",
+        cover_path: "",
+        description:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis in expedita blanditiis iste! Quam dolore, officia eligendi sed nihil explicabo temporibus recusandae possimus nesciunt impedit esse ipsum facere quibusdam doloribus.",
+        geners: ["action"],
+        length: 23,
+        original_title: "",
+        parantial_quide: 13,
+        trailer_link: "",
+        release_date: ""
+      };
+      this.films.push(
+        newfilm,
+        newfilm,
+        newfilm,
+        newfilm,
+        newfilm,
+        newfilm,
+        newfilm,
+        newfilm
+      );
     });
   }
   isLoggedIn(): boolean {

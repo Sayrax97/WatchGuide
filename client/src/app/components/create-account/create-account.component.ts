@@ -6,7 +6,6 @@ import { Component, OnInit } from "@angular/core";
 import { Country } from "src/app/Models/countryModel";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth-service/auth.service";
-
 @Component({
   selector: "app-create-account",
   templateUrl: "./create-account.component.html",

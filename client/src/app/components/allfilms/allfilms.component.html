@@ -1,14 +1,16 @@
-<div *ngIf="films" class="row row-cols-5">
-  <div class="col" *ngFor="let film of films">
-    <div class="card m-4" style="width: 18rem;">
+<div *ngIf="films" class="row d-flex flex-wrap">
+  <div class="m-1" *ngFor="let film of films">
+    <div class="card m-1" style="width: 16rem;">
       <img
-        class="card-img-top film_cover m-2"
+        class="card-img-top film_cover m-2 "
         [src]="film.cover_path"
         alt="Film image"
       />
       <div class="card-body">
-        <h5 class="card-title">{{ film.title }}</h5>
-        <p class="card-text">{{ film.description.slice(0, 100) }}...</p>
+        <h5 class="card-title" style="height: 4rem;">{{ film.title }}</h5>
+        <p class="card-text" style="height: 6rem;">
+          {{ film.description.slice(0, 100) }}...
+        </p>
         <a [routerLink]="['/film', film.id]" class="btn btn-primary"
           >Film page</a
         >

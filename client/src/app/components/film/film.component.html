@@ -14,4 +14,10 @@
   </ul>
   <img [src]="film.cover_path" alt="" />
   <p>{{ film.parantial_quide }}</p>
+  <a
+    (click)="addToWatchlist()"
+    [routerLink]="['/watchlist']"
+    class="btn btn-primary"
+    >Add to Watchlist</a
+  >
 </div>

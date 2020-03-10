@@ -18,7 +18,6 @@ export class WatchlistComponent implements OnInit {
     let user_id = this.auth.profile();
     this.uService.getWatchList(user_id).subscribe(res => {
       this.watchList = res.films;
-      console.log(this.watchList);
     });
   }
 }

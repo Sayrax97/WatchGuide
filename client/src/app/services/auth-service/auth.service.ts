@@ -30,8 +30,8 @@ export class AuthService {
   isLoggedIn() {
     let user = this.getUser();
     if (user) {
-      console.log(user.exp);
-      console.log(Date.now() / 1000);
+      //console.log(user.exp);
+      //console.log(Date.now() / 1000);
       return user.exp > Date.now() / 1000;
     } else {
       return false;

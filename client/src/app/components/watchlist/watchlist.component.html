@@ -1,7 +1,7 @@
 <p>watchlist works!</p>
-<div *ngIf="watchList" class="row row-cols-5">
-  <div class="col" *ngFor="let item of watchList; let i = index">
-    <div class="card m-4" style="width: 18rem;">
+<div *ngIf="watchList" class="row d-flex flex-wrap">
+  <div class="m-1" *ngFor="let item of watchList; let i = index">
+    <div class="m-1" style="width: 18rem;">
       <img
         class="card-img-top film_cover m-2"
         [src]="item.cover_path"
@@ -10,7 +10,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ item.title }}</h5>
         <div class="card-body">
-          <h6 class="card-title">{{ item.original_title }}</h6>
+          <h6 class="card-body">{{ item.original_title }}</h6>
           <p class="card-date">{{ item.release_date }}</p>
           <a [routerLink]="['/film', item.id]" class="btn btn-primary"
             >Film page</a

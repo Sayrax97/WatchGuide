@@ -19,5 +19,6 @@ require("./routes/country.routes")(app);
 require("./routes/actor.routes")(app);
 require("./routes/film.routes")(app);
 require("./routes/gener.routes")(app);
+require("./routes/watchList.routes")(app);
 
 app.listen(port, () => console.log("Server je aktiviran"));

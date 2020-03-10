@@ -7,9 +7,11 @@ import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./components/login/login.component";
 import { CreateAccountComponent } from "./components/create-account/create-account.component";
 import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
+import { AllFilmsComponent } from "./components/allfilms/allfilms.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
+  { path: "allfilms", component: AllFilmsComponent },
   { path: "login", component: LoginComponent },
   { path: "create-account", component: CreateAccountComponent },
   {

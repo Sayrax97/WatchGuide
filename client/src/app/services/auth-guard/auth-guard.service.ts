@@ -11,7 +11,6 @@ export class AuthGuardService {
   canActivate() {
     if (!this.auth.isLoggedIn()) {
       this.auth.logout();
-      this.router.navigateByUrl("/");
       return false;
     } else {
       return true;

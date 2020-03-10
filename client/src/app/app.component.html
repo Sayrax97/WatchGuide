@@ -41,6 +41,14 @@
       <li>
         <a
           *ngIf="auth.isLoggedIn()"
+          class="nav-link"
+          [routerLink]="['/watchlist']"
+          >Watchlist</a
+        >
+      </li>
+      <li>
+        <a
+          *ngIf="auth.isLoggedIn()"
           class="nav-link pointer"
           (click)="auth.logout()"
           >Logout</a

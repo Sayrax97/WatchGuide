@@ -201,7 +201,7 @@ exports.login = (req, res) => {
           let user_id = String(data.id);
           let token = jwt.sign({}, PRIVATE_KEY, {
             algorithm: "RS256",
-            expiresIn: 120,
+            expiresIn: 120000,
             subject: user_id
           });
           res.send({ token });
@@ -217,4 +217,40 @@ exports.profile = (req, res) => {
   let decoded = jwt.verify(req.headers["authorization"], PRIVATE_KEY);
   console.log(decoded);
   console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+};
+exports.watchlist = (req, res) => {
+  let id = req.params.id;
+  user
+    .findByPk(id, {
+      attributes: {
+        exclude: [
+          "username",
+          "password",
+          "birthday",
+          "image_path",
+          "full_name",
+          "countryId"
+        ]
+      },
+      include: [
+        {
+          model: models.film,
+          attributes: {
+            exclude: [
+              "length",
+              "description",
+              "parantial_quide",
+              "trailer_link",
+              "parantial_quide"
+            ]
+          }
+        }
+      ]
+    })
+    .then(data => res.send(data))
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retieving users"
+      });
+    });
 };

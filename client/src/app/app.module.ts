@@ -11,6 +11,8 @@ import { ProfileComponent } from "./components/profile/profile.component";
 import { FilmComponent } from "./components/film/film.component";
 import { ActorComponent } from "./components/actor/actor.component";
 import { AllFilmsComponent } from "./components/allfilms/allfilms.component";
+import { WatchlistComponent } from "./components/watchlist/watchlist.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -21,14 +23,16 @@ import { AllFilmsComponent } from "./components/allfilms/allfilms.component";
     ProfileComponent,
     FilmComponent,
     ActorComponent,
-    AllFilmsComponent
+    AllFilmsComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

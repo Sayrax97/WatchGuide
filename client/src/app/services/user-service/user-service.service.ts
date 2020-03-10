@@ -27,4 +27,8 @@ export class UserServiceService {
   uploadImage(data: FormData) {
     return this.httpClient.put(this.url + "/change", data);
   }
+
+  getWatchList(id) {
+    return this.httpClient.get<any>(this.url + "/watchlist" + `/${id}`);
+  }
 }

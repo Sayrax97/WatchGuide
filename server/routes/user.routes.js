@@ -20,8 +20,9 @@ module.exports = app => {
 
   //Login user
   router.post("/login", upload.none(), user.login);
+
   // Create a new user
-  router.post("/", upload.none(), user.create); //upload.single("profileImage")
+  router.post("/", upload.none(), user.create);
 
   // Retrieve a single user with id
   router.get("/:id", user.findOne);
@@ -31,6 +32,9 @@ module.exports = app => {
 
   // Retrieve all users
   router.get("/", user.findAll);
+
+  //Watchlist
+  router.get("/watchlist/:id", user.watchlist);
 
   //change profile picture
   router.put("/change", upload.single("profileImage"), user.change);

@@ -1,3 +1,4 @@
+import { WatchlistComponent } from "./components/watchlist/watchlist.component";
 import { FilmComponent } from "./components/film/film.component";
 import { ActorComponent } from "./components/actor/actor.component";
 import { ProfileComponent } from "./components/profile/profile.component";
@@ -13,6 +14,11 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "allfilms", component: AllFilmsComponent },
   { path: "login", component: LoginComponent },
+  {
+    path: "watchlist",
+    component: WatchlistComponent,
+    canActivate: [AuthGuardService]
+  },
   { path: "create-account", component: CreateAccountComponent },
   {
     path: "profile",

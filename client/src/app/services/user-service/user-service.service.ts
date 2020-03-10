@@ -24,4 +24,7 @@ export class UserServiceService {
   createUser(user: User) {
     return this.httpClient.post<any>(this.url, user);
   }
+  uploadImage(data: FormData) {
+    return this.httpClient.put(this.url + "/change", data);
+  }
 }

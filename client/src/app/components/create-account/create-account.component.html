@@ -34,7 +34,12 @@
   <label>Date of birth</label>
   <input formControlName="birthday" class="form-control" type="date" />
   <label>Input image</label>
-  <input formControlName="image" class="form-control" type="file" />
+  <input
+    formControlName="image"
+    class="form-control"
+    type="file"
+    (change)="onFileChanged($event)"
+  />
   <button
     type="submit"
     [disabled]="!createAccountForm.valid"

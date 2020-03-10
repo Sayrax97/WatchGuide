@@ -5,6 +5,7 @@ import { CountryService } from "./../../services/country-service/country.service
 import { Component, OnInit } from "@angular/core";
 import { Country } from "src/app/Models/countryModel";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth-service/auth.service";
 
 @Component({
   selector: "app-create-account",
@@ -14,10 +15,11 @@ import { Router } from "@angular/router";
 export class CreateAccountComponent implements OnInit {
   createAccountForm: FormGroup;
   countries: Array<Country>;
-
+  userPicture;
   constructor(
     private cService: CountryService,
     private uService: UserServiceService,
+    private auth: AuthService,
     private router: Router
   ) {}
 
@@ -69,8 +71,20 @@ export class CreateAccountComponent implements OnInit {
     };
 
     this.uService.createUser(newUser).subscribe(res => {
-      console.log(res);
-      this.router.navigate(["profile", { id: res.id }]);
+      this.auth.saveToken(res.token);
+      let user_id = this.auth.profile();
+      let formdata = new FormData();
+      formdata.append("id", user_id);
+      formdata.append("username", newUser.username);
+      formdata.append("profileImage", this.userPicture);
+      this.uService.uploadImage(formdata).subscribe(data => {
+        console.log(data);
+        this.router.navigate(["profile"]);
+      });
     });
+  }
+  onFileChanged(event) {
+    this.userPicture = event.target.files[0];
+    console.log(this.userPicture);
   }
 }

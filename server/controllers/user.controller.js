@@ -254,3 +254,53 @@ exports.watchlist = (req, res) => {
       });
     });
 };
+exports.isOnWatchList = (req, res) => {
+  let id = req.body.id;
+  let film_id = req.body.film_id;
+  user
+    .findByPk(id, {
+      attributes: {
+        exclude: [
+          "username",
+          "password",
+          "birthday",
+          "image_path",
+          "full_name",
+          "countryId"
+        ]
+      },
+      include: [
+        {
+          model: models.film,
+          attributes: {
+            exclude: [
+              "title",
+              "original_title",
+              "release_date",
+              "cover_path",
+              "length",
+              "description",
+              "parantial_quide",
+              "trailer_link",
+              "parantial_quide"
+            ]
+          }
+        }
+      ]
+    })
+    .then(data => {
+      let bool = false;
+      data.films.forEach(film => {
+        console.log(film.id + " " + film_id);
+        if (film.id == film_id) {
+          bool = true;
+        }
+      });
+      res.send(bool);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retieving users"
+      });
+    });
+};

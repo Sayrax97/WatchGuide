@@ -31,4 +31,10 @@ export class UserServiceService {
   getWatchList(id) {
     return this.httpClient.get<any>(this.url + "/watchlist" + `/${id}`);
   }
+  isOnUsersWatchlist(user_id, film_id) {
+    return this.httpClient.post<boolean>(this.url + "/watchlist", {
+      id: user_id,
+      film_id: film_id
+    });
+  }
 }

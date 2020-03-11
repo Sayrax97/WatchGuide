@@ -4,6 +4,7 @@ import { FilmService } from "./../../services/film-service/film.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AuthService } from "src/app/services/auth-service/auth.service";
+import { UserServiceService } from "src/app/services/user-service/user-service.service";
 
 @Component({
   selector: "app-film",
@@ -12,9 +13,11 @@ import { AuthService } from "src/app/services/auth-service/auth.service";
 })
 export class FilmComponent implements OnInit {
   film: Film;
+  isOnUsersWatchlist: boolean;
 
   constructor(
     private fService: FilmService,
+    private uService: UserServiceService,
     private activatedRoute: ActivatedRoute,
     private auth: AuthService
   ) {}
@@ -24,10 +27,15 @@ export class FilmComponent implements OnInit {
       let film_id = params.id;
       this.fService.getFilm(film_id).subscribe(res => {
         this.film = res;
+
+        this.uService
+          .isOnUsersWatchlist(this.auth.profile(), film_id)
+          .subscribe(bool => {
+            this.isOnUsersWatchlist = bool;
+          });
       });
     });
   }
-
   addToWatchlist(): void {
     this.activatedRoute.params.subscribe(params => {
       let watchlist: Watchlist = {

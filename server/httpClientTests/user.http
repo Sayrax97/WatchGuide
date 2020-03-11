@@ -28,3 +28,12 @@ content-type: application/json
 
 ###
 GET http://localhost:3000/user/watchlist/1
+
+###
+POST http://localhost:3000/user/watchlist
+content-type: application/json
+
+{
+    "id":2,
+    "film_id":3
+}

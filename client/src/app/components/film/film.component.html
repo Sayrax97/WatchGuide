@@ -15,6 +15,7 @@
   <img [src]="film.cover_path" alt="" />
   <p>{{ film.parantial_quide }}</p>
   <a
+    *ngIf="!isOnUsersWatchlist"
     (click)="addToWatchlist()"
     [routerLink]="['/watchlist']"
     class="btn btn-primary"

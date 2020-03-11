@@ -24,6 +24,9 @@ module.exports = app => {
   // Create a new user
   router.post("/", upload.none(), user.create);
 
+  //Check if user has film on watchlist
+  router.post("/watchlist", user.isOnWatchList);
+
   // Retrieve a single user with id
   router.get("/:id", user.findOne);
 

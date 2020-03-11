@@ -2,6 +2,7 @@ import { UserServiceService } from "./../../services/user-service/user-service.s
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AuthService } from "src/app/services/auth-service/auth.service";
+import { formatDate } from "@angular/common";
 
 @Component({
   selector: "app-profile",
@@ -19,6 +20,10 @@ export class ProfileComponent implements OnInit {
     let user_id = this.auth.profile();
     this.uService.getUser(user_id).subscribe(res => {
       this.user = res;
+      this.user.birthday = this.getFormatedDate();
     });
+  }
+  getFormatedDate() {
+    return formatDate(this.user.birthday, "dd.MM.yyyy", "en-US");
   }
 }

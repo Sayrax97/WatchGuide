@@ -6,8 +6,8 @@ module.exports = {
       "review",
       [
         {
-          user_id: 1,
-          film_id: 1,
+          user: 1,
+          film: 1,
           stars: 5
         }
       ],

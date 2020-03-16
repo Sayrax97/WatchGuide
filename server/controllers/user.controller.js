@@ -272,6 +272,7 @@ exports.isOnWatchList = (req, res) => {
       include: [
         {
           model: models.film,
+          //as: "watchlists",
           attributes: {
             exclude: [
               "title",

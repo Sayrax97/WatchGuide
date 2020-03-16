@@ -1,8 +1,8 @@
 ### all films
 GET http://localhost:3000/film
 
-### one films
-GET http://localhost:3000/film/3
+### one film
+GET http://localhost:3000/film/1
 
 ### add new film
 POST http://localhost:3000/film
@@ -13,6 +13,16 @@ content-type: application/json
     "length":122,
     "description":"ejgewghewhgnenwenbwirnbrwnbiwrnbiwr",
     "release_date":"1955-11-10"
+}
+### add new review
+
+POST http://localhost:3000/review
+content-type: application/json
+
+{
+    "user":2,
+    "film":1,
+    "stars":2
 }
 
 ### update film

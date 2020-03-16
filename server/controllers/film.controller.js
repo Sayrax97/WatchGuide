@@ -28,8 +28,34 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   let id = req.params.id;
   film
-    .findByPk(id)
+    .findByPk(id, {
+      include: [
+        {
+          model: models.user,
+          as: "reviews",
+          attributes: {
+            exclude: [
+              "full_name",
+              "username",
+              "password",
+              "country_id",
+              "length",
+              "birthday",
+              "image_path"
+            ]
+          }
+        }
+      ]
+    })
     .then(data => {
+      let s = 0;
+      data.reviews.forEach(e => {
+        s += e.review.stars;
+      });
+      s /= data.reviews.length;
+      data.reviews = s;
+      console.log(data);
+
       res.send(data);
     })
     .catch(err => {

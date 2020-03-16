@@ -1,8 +1,26 @@
-<div *ngIf="user">
-  <p>{{ user.full_name }}</p>
-  <p>{{ user.username }}</p>
-  <p>{{ user.password }}</p>
-  <p>{{ user.birthday }}</p>
-  <p>{{ user.country.name }}</p>
-  <img [src]="user.image_path" alt="" />
+<div class="d-flex flex-row">
+  <div class="card m-4">
+    <div class="card m-2">
+      <img class="profile_image" [src]="user.image_path" />
+    </div>
+    <div class="card m-2" *ngIf="user">
+      <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center">
+          <p>Full name: {{ user.full_name }}</p>
+        </div>
+        <button type="button" class="btn btn-outline-primary">
+          Change Full name
+        </button>
+      </div>
+      <p>Username: {{ user.username }}</p>
+      <p>Birthday: {{ user.birthday }}</p>
+      <p>Country of origin: {{ user.country.name }}</p>
+    </div>
+  </div>
+  <div>
+    <div>
+      <canvas id="myChart" style="max-width: 500px;"></canvas>
+    </div>
+    <div></div>
+  </div>
 </div>

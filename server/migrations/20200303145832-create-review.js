@@ -2,13 +2,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable("review", {
-      user_id: {
+      user: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         model: "user",
         key: "id"
       },
-      film_id: {
+      film: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         model: "film",

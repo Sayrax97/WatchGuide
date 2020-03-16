@@ -33,11 +33,13 @@ module.exports = (sequelize, DataTypes) => {
 
     models.film.belongsToMany(models.user, {
       through: models.review,
-      foreignKey: "film_id"
+      as: "reviews",
+      foreignKey: "film"
     });
 
     models.film.belongsToMany(models.user, {
       through: models.watchlist,
+      //as: "watchlists",
       foreignKey: "film_id"
     });
 

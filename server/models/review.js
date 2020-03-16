@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const review = sequelize.define(
     "review",
     {
-      user_id: { type: DataTypes.INTEGER, primaryKey: true },
-      film_id: { type: DataTypes.INTEGER, primaryKey: true },
+      user: { type: DataTypes.INTEGER, primaryKey: true },
+      film: { type: DataTypes.INTEGER, primaryKey: true },
       stars: DataTypes.INTEGER
     },
     {

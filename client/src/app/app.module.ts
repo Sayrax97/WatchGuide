@@ -13,6 +13,7 @@ import { ActorComponent } from "./components/actor/actor.component";
 import { AllFilmsComponent } from "./components/allfilms/allfilms.component";
 import { WatchlistComponent } from "./components/watchlist/watchlist.component";
 import { RouterModule } from "@angular/router";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RouterModule } from "@angular/router";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

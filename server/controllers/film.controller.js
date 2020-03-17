@@ -52,7 +52,7 @@ exports.findOne = (req, res) => {
       data.reviews.forEach(e => {
         s += e.review.stars;
       });
-      s /= data.reviews.length;
+      if (data.reviews.length > 0) s /= data.reviews.length;
       data.reviews = s;
       console.log(data);
 

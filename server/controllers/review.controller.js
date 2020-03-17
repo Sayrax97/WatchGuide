@@ -53,7 +53,7 @@ exports.insert = (req, res) => {
           .then(valid => {
             if (valid == 1) {
               res.send({
-                message: "User was successfully updated"
+                message: "Review was successfully updated"
               });
             } else {
               res.send({

@@ -5,7 +5,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AuthService } from "src/app/services/auth-service/auth.service";
 import { UserServiceService } from "src/app/services/user-service/user-service.service";
-
 @Component({
   selector: "app-film",
   templateUrl: "./film.component.html",
@@ -13,25 +12,32 @@ import { UserServiceService } from "src/app/services/user-service/user-service.s
 })
 export class FilmComponent implements OnInit {
   film: Film;
+  film_id;
   isOnUsersWatchlist: boolean;
+  stars = 5;
 
   constructor(
     private fService: FilmService,
     private uService: UserServiceService,
     private activatedRoute: ActivatedRoute,
-    private auth: AuthService
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      let film_id = params.id;
-      this.fService.getFilm(film_id).subscribe(res => {
+      this.film_id = params.id;
+      this.fService.getFilm(this.film_id).subscribe(res => {
         this.film = res;
 
         this.uService
-          .isOnUsersWatchlist(this.auth.profile(), film_id)
+          .isOnUsersWatchlist(this.auth.profile(), this.film_id)
           .subscribe(bool => {
             this.isOnUsersWatchlist = bool;
+          });
+        this.fService
+          .getReview(this.auth.profile(), this.film_id)
+          .subscribe(data => {
+            console.log(data);
           });
       });
     });
@@ -48,5 +54,12 @@ export class FilmComponent implements OnInit {
         .postToWatchlist(watchlist)
         .subscribe(res => console.log(res));
     });
+  }
+  rate() {
+    this.fService
+      .postReview(this.auth.profile(), this.film_id, this.stars)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 }

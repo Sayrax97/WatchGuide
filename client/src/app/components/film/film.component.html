@@ -15,10 +15,15 @@
   <img [src]="film.cover_path" alt="" />
   <p>{{ film.parantial_quide }}</p>
   <a
-    *ngIf="!isOnUsersWatchlist"
+    *ngIf="auth.isLoggedIn() && !isOnUsersWatchlist"
     (click)="addToWatchlist()"
     [routerLink]="['/watchlist']"
     class="btn btn-primary"
     >Add to Watchlist</a
   >
+  <ngb-rating
+    *ngIf="auth.isLoggedIn()"
+    [(rate)]="stars"
+    (rateChange)="rate()"
+  ></ngb-rating>
 </div>

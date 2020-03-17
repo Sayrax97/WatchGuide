@@ -16,7 +16,7 @@ export class FilmService {
     return this.httpClient.get<Array<Film>>(this.url);
   }
   getFilm(id: number) {
-    return this.httpClient.get<Film>(this.url + `/${id}`);
+    return this.httpClient.get<any>(this.url + `/${id}`);
   }
 
   postToWatchlist(watchlist: Watchlist) {

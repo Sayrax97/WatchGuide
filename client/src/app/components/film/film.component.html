@@ -26,4 +26,5 @@
     [(rate)]="stars"
     (rateChange)="rate()"
   ></ngb-rating>
+  <label *ngIf="film_rating">{{ film_rating }}/10</label>
 </div>

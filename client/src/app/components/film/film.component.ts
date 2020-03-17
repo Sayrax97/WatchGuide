@@ -15,7 +15,7 @@ export class FilmComponent implements OnInit {
   film_id;
   isOnUsersWatchlist: boolean;
   stars;
-
+  film_rating;
   constructor(
     private fService: FilmService,
     private uService: UserServiceService,
@@ -28,7 +28,13 @@ export class FilmComponent implements OnInit {
       this.film_id = params.id;
       this.fService.getFilm(this.film_id).subscribe(res => {
         this.film = res;
+        this.film_rating = 0;
+        console.log(res);
 
+        res.reviews.forEach(review => {
+          this.film_rating += review.review.stars;
+        });
+        this.film_rating /= res.reviews.length;
         this.uService
           .isOnUsersWatchlist(this.auth.profile(), this.film_id)
           .subscribe(bool => {
@@ -37,7 +43,10 @@ export class FilmComponent implements OnInit {
         this.fService
           .getReview(this.auth.profile(), this.film_id)
           .subscribe(data => {
-            this.stars = data.stars;
+            if (data) this.stars = data.stars;
+            else {
+              this.stars = 5;
+            }
           });
       });
     });
@@ -59,7 +68,7 @@ export class FilmComponent implements OnInit {
     this.fService
       .postReview(this.auth.profile(), this.film_id, this.stars)
       .subscribe(data => {
-        console.log(data);
+        this.ngOnInit();
       });
   }
 }

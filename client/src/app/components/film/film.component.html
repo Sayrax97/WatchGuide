@@ -22,7 +22,7 @@
     >Add to Watchlist</a
   >
   <ngb-rating
-    *ngIf="auth.isLoggedIn()"
+    *ngIf="auth.isLoggedIn() && stars"
     [(rate)]="stars"
     (rateChange)="rate()"
   ></ngb-rating>

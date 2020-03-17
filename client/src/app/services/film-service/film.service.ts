@@ -30,6 +30,6 @@ export class FilmService {
     });
   }
   getReview(user: number, film: number) {
-    return this.httpClient.get(this.reviewUrl + `/${user}/${film}`);
+    return this.httpClient.get<any>(this.reviewUrl + `/${user}/${film}`);
   }
 }

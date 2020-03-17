@@ -14,7 +14,7 @@ export class FilmComponent implements OnInit {
   film: Film;
   film_id;
   isOnUsersWatchlist: boolean;
-  stars = 5;
+  stars;
 
   constructor(
     private fService: FilmService,
@@ -37,7 +37,7 @@ export class FilmComponent implements OnInit {
         this.fService
           .getReview(this.auth.profile(), this.film_id)
           .subscribe(data => {
-            console.log(data);
+            this.stars = data.stars;
           });
       });
     });

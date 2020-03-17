@@ -4,7 +4,7 @@ module.exports = app => {
   var router = require("express").Router();
 
   // Retrieve a specific review
-  router.get("/:user/:film", review.findOne);
+  router.get("/:id/:fid", review.findOne);
 
   // Insert new watchList
   router.post("/", review.insert);

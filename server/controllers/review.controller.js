@@ -14,21 +14,19 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  console.log(req.params);
-
-  if (!req.params.user) {
+  if (!req.params.id) {
     res.status(400).send({
       message: "Unknown user"
     });
   }
-  if (!req.params.film) {
+  if (!req.params.fid) {
     res.status(400).send({
       message: "Unknown movie"
     });
   }
 
-  let idUser = req.params.user;
-  let idFilm = req.params.film;
+  let idUser = req.params.id;
+  let idFilm = req.params.fid;
   review
     .findOne({
       where: {
@@ -36,7 +34,9 @@ exports.findOne = (req, res) => {
         user: idUser
       }
     })
-    .then(data => res.send(data))
+    .then(data => {
+      res.send(data);
+    })
     .catch(err => {
       res.status(500).send({
         message: "Error retieving review"

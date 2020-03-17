@@ -3,8 +3,8 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  // Retrieve all geners
-  router.get("/", review.findAll);
+  // Retrieve a specific review
+  router.get("/:user/:film", review.findOne);
 
   // Insert new watchList
   router.post("/", review.insert);

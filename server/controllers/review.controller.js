@@ -34,14 +34,46 @@ exports.insert = (req, res) => {
     film: req.body.film,
     stars: req.body.stars
   };
+  let idFilm = req.body.film;
+  let idUser = req.body.user;
+
   review
-    .create(newReview)
-    .then(data => {
-      res.send(data);
+    .findOne({
+      where: {
+        film: idFilm,
+        user: idUser
+      }
     })
-    .catch(err => {
-      res.status(500).send({
-        message: err.message || "Some error occured while adding new movie"
-      });
+    .then(found => {
+      if (found) {
+        review
+          .update(req.body, {
+            where: { film: idFilm, user: idUser }
+          })
+          .then(valid => {
+            if (valid == 1) {
+              res.send({
+                message: "User was successfully updated"
+              });
+            } else {
+              res.send({
+                message:
+                  "Bad request body provided, missing some attributes maybe or id wrong"
+              });
+            }
+          });
+      } else {
+        review
+          .create(newReview)
+          .then(data => {
+            res.send(data);
+          })
+          .catch(err => {
+            res.status(500).send({
+              message:
+                err.message || "Some error occured while adding new movie"
+            });
+          });
+      }
     });
 };

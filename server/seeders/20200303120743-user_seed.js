@@ -17,7 +17,8 @@ module.exports = {
           username: "BSNoob",
           password: "4531091efe21b4071422f27cd015cf10",
           country_id: 1,
-          birthday: "1997-06-17"
+          birthday: "1997-06-17",
+          image_path: "http://localhost:3000/img/profiles/BSNoob/profile.jpg"
         },
         {
           full_name: "John Doe ",

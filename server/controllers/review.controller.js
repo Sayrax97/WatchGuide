@@ -13,6 +13,37 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.findOne = (req, res) => {
+  console.log(req.params);
+
+  if (!req.params.user) {
+    res.status(400).send({
+      message: "Unknown user"
+    });
+  }
+  if (!req.params.film) {
+    res.status(400).send({
+      message: "Unknown movie"
+    });
+  }
+
+  let idUser = req.params.user;
+  let idFilm = req.params.film;
+  review
+    .findOne({
+      where: {
+        film: idFilm,
+        user: idUser
+      }
+    })
+    .then(data => res.send(data))
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retieving review"
+      });
+    });
+};
+
 exports.insert = (req, res) => {
   if (!req.body.film) {
     res.status(400).send({
